@@ -1,5 +1,5 @@
 {
-    "name": "smalls/video-tools",
+    "name": "ghost/video-tools",
     "description": "短视频的拓展包，集成各大短视频的去水印功能",
     "type": "library",
     "keywords": [
@@ -9,8 +9,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Smalls",
-            "email": "smalls0098@gmail.com"
+            "name": "ghost",
+            "email": "wangqun1436@gmail.com"
         }
     ],
     "require": {
