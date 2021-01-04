@@ -70,32 +70,21 @@ class VideoManager
     public static function __callStatic($method, $params)
     {
         $app = new self();
-        return $app->create($method, $params);
+        return $app->make($method, $params);
     }
-
-    /**
-     * @param string $method
-     * @param array $params
-     * @return mixed
-     * @throws InvalidManagerException
-     */
-    private function create(string $method, array $params)
-    {
-        $className = __NAMESPACE__ . '\\Tools\\' . $method;
-        if (!class_exists($className)) {
-            throw new InvalidManagerException("the method name does not exist . method : {$method}");
-        }
-        return $this->make($className, $params);
-    }
-
+    
     /**
      * @param string $className
      * @param array $params
      * @return mixed
      * @throws InvalidManagerException
      */
-    private function make(string $className, array $params)
+    public function make(string $method, array $params = [])
     {
+	$className = __NAMESPACE__ . '\\Tools\\' . $method;
+	if (!class_exists($className)) {
+	    throw new InvalidManagerException("the method name does not exist . method : {$method}");
+	}
         $app = new $className($params);
         if ($app instanceof IVideo) {
             return $app;
